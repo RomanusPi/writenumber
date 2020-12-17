@@ -15,34 +15,39 @@ bool losowanie =true; // set randomization
 bool kolejne=true; unsigned long int Petla=1;
 std ::vector <unsigned int> P;
 for (int y=0;y<=dl+3;y++){P.push_back(0);}
-std::vector<unsigned int> Lp; //Lp number
-int wskaznik=0;int D=0;unsigned int s=0,i=0;
-unsigned long int pozycjaLp=0;// position in Lp number
-std::cout<<"\n Random\n";
-do{//-------------------------Next position----------------
-if (losowanie)// Randomization
-{ int zakres=10; int ilosc=10, a=0;
-int cyfry[zakres+1],tablosowa[ilosc+1];
-do{
-zakres=10;
-for (i=0; i<zakres; i++)
-{ cyfry[i]=i;}//set of ten digit
-for (i=0; i<ilosc; i++)
-{ a=(rand()%zakres);
-tablosowa[i]=cyfry[a];
-cyfry[a]=cyfry[zakres-1];zakres--;
-Lp.push_back( tablosowa[i]);
-pozycjaLp++;
-}
-}while(pozycjaLp<=(dl*10));
-}//--------------------------------------------------------------
+   std::vector<unsigned int> Lp; //Lp number
+   int wskaznik=0;int D=0;unsigned int s=0,i=0;
+   unsigned long int pozycjaLp=0;// position in Lp number
+   std::cout<<"\n Random\n";
+   do{//-------------------------Next position----------------
+      if (losowanie)// Randomization
+         { int zakres=10; int ilosc=10, a=0;
+           int cyfry[zakres+1],tablosowa[ilosc+1];
+           do{
+              zakres=10;
+              for (i=0; i<zakres; i++)
+                 { cyfry[i]=i;}//set of ten digit
+                   for (i=0; i<ilosc; i++)
+                       { a=(rand()%zakres);
+                         tablosowa[i]=cyfry[a];
+                         cyfry[a]=cyfry[zakres-1];zakres--;
+                         Lp.push_back( tablosowa[i]);
+                         pozycjaLp++; 
+                        }     
+              }while(pozycjaLp<=(dl*10));
+
+
+		  }//--------------------------------------------------------------
 //SetConsoleTextAttribute( hOut, 0x007 );
-std::cout<<"\n----------------------------------------------------------------------------\n";
-std::cout<<" Lp= ";// print an auxilary Ln number
-s=0;
-for(i=0;i<(dl*10);i++)
-{ if (!(i%10)&&(i>0)){std::cout<<"'";s=0;}
-if (!losowanie){Lp.push_back( s);} // put number Lp as set of ten digit 0-9
+
+ 	std::cout<<"\n------------------------------------------------------\n";
+    std::cout<<" Lp= ";// print an auxilary Ln number
+	s=0;
+	for(i=0;i<(dl*10);i++)
+		{ if (!(i%10)&&(i>0)){std::cout<<"'";s=0;}
+		if (!losowanie){Lp.push_back( s);
+		}
+ // put number Lp as set of ten digit 0-9
 s++;std::cout<< Lp[i];
 }
 //std::cout<<"\n";SetConsoleTextAttribute( hOut, 0x008 );
